@@ -6,12 +6,25 @@
 
 import string 
 import re
-
+import  pandas as pd
+import numpy as np
 
 # In[2]:
 
-
+def list_joint(text):
+    # Check if the input is a list of characters
+    if isinstance(text, list):
+        return ''.join(text)  # Join the list of characters into a string
+    
+    # If it's NaN, return an empty string
+    if pd.isnull(text):
+        return ""
+    
+    return str(text)  # Otherwise, just convert to a string
+  
 def remove_punctuations(text):
+  if pd.isnull(text):  
+        return np.nan
   text = text.translate(str.maketrans('', '', string.punctuation))
   return text.strip()
 
@@ -21,6 +34,8 @@ def remove_punctuations(text):
 
 def removes_specials(text):
   tmp=text
+  if pd.isnull(tmp):  
+        return np.nan
   pattern = re.compile(r'[A-Za-z0-9\s]')
   specials = re.sub(pattern, "", tmp)
   return text.translate(str.maketrans('', '', specials)).strip()
@@ -31,6 +46,8 @@ def removes_specials(text):
 
 def removes_non_printables(text):
   tmp=text
+  if pd.isnull(tmp):  
+        return np.nan
   specials = tmp.translate(str.maketrans('', '', string.printable)).strip()
   return text.translate(str.maketrans('', '', specials)).strip()
 
@@ -39,6 +56,8 @@ def removes_non_printables(text):
 
 
 def remove_whitespace(text):
+  if pd.isnull(text):  
+        return np.nan
   text = text.translate(str.maketrans('', '', string.whitespace))
   return text.strip()
 
@@ -47,6 +66,8 @@ def remove_whitespace(text):
 
 
 def remove_hexdigits(text):
+  if pd.isnull(text):  
+        return np.nan
   text = text.translate(str.maketrans('', '', string.hexdigits))
   return text.strip()
 
@@ -55,6 +76,8 @@ def remove_hexdigits(text):
 
 
 def remove_octdigits(text):
+  if pd.isnull(text):  
+        return np.nan
   text = text.translate(str.maketrans('', '', string.octdigits))
   return text.strip()
 
@@ -62,17 +85,24 @@ def remove_octdigits(text):
 # In[8]:
 
 
+
 def remove_html_tags(text):
-    reg=re.compile(r"<[^>]*>")
-    return re.sub(reg,"",text)
+    if isinstance(text, str):  # Check if the input is a string
+        reg = re.compile(r"<[^>]*>")  # Regular expression to match HTML tags
+        return reg.sub('', text)  # Remove HTML tags
+    else:
+        return text
 
 
 # In[9]:
 
 
 def remove_url(text):
-  url_pattern = re.compile(r"(http?|ftp|https?|file)://\S+ ")
-  return re.sub(url_pattern, "", text)
+  if isinstance(text, str):
+    url_pattern = re.compile(r"(http?|ftp|https?|file)://\S+ ")
+    return re.sub(url_pattern, "", text)
+  else:
+    return text
 
 
 # In[10]:
