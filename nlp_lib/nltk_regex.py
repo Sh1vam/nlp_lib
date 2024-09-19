@@ -74,36 +74,55 @@ def stem_words(text):
     if pd.isnull(text):  
         return np.nan
     return ' '.join([ps.stem(word) for word in text.split()])
-# Define stemming functions for each stemmer
+
 def tokenized_text(text):
     if pd.isnull(text):  
         return np.nan
     return nltk.word_tokenize(text)
-def porter_stemming(tokenized_text):
-    if pd.isnull(tokenized_text):  
-        return np.nan
-    return [ps.stem(word) for word in tokenized_text]
 
-def lancaster_stemming(tokenized_text):
-    if pd.isnull(tokenized_text):  
-        return np.nan
-    return [ls.stem(word) for word in tokenized_text]
+# Define stemming functions for each stemmer
+def porter_stemming(tokenised_text):
+    if isinstance(tokenised_text, list):  # Check if it's a list
+        return [ps.stem(word) for word in tokenised_text]  # Apply stemming word by word
+    else:
+        return np.nan 
 
-def snowball_stemming(tokenized_text):
-    if pd.isnull(tokenized_text):  
-        return np.nan
-    return [ss.stem(word) for word in tokenized_text]
+def lancaster_stemming(tokenised_text):
+    if isinstance(tokenised_text, list):  # Check if it's a list
+        return [ls.stem(word) for word in tokenised_text]  # Apply stemming word by word
+    else:
+        return np.nan 
+def snowball_stemming(tokenszed_text):
+    if isinstance(tokenised_text, list):  # Check if it's a list
+        return [ss.stem(word) for word in tokenised_text]  # Apply stemming word by word
+    else:
+        return np.nan 
 
-def regexp_stemming(tokenized_text):
-    if pd.isnull(tokenized_text):  
+def regexp_stemming(tokenised_text):
+    """if pd.isnull(tokenized_text):  
         return np.nan
-    return [rs.stem(word) for word in tokenized_text]
+    return [rs.stem(word) for word in tokenized_text]"""
+    if isinstance(tokenised_text, list):  # Check if it's a list
+        return [rs.stem(word) for word in tokenised_text]  # Apply stemming word by word
+    else:
+        return np.nan 
 
 # Define lemmatization function using WordNetLemmatizer
-def wordnet_lemmatizing(tokenized_text):
-    if pd.isnull(tokenized_text):  
+def wordnet_lemmatizing(tokenised_text):
+    if isinstance(tokenised_text, list):  
+        return [lemmatizer.lemmatize(word) for word in tokenised_text]  
+    else:
+        return np.nan 
+
+
+def perform_lemmatization_with_pos(text):
+    if pd.isnull(text):  
         return np.nan
-    return [lemmatizer.lemmatize(word) for word in tokenized_text]
+    tokens = nltk.word_tokenize(text)  # Tokenize the tweet
+    pos_tags = nltk.pos_tag(tokens)  # Get POS tags for each token
+    lemmatized_words = [lemmatizer.lemmatize(word, pos=get_wordnet_pos(tag)) for word, tag in pos_tags]
+    return ' '.join(lemmatized_words)
+
 
 
 def perform_lemmatization_with_pos(text):
