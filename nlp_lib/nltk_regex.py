@@ -92,7 +92,7 @@ def lancaster_stemming(tokenised_text):
         return [ls.stem(word) for word in tokenised_text]  # Apply stemming word by word
     else:
         return np.nan 
-def snowball_stemming(tokenszed_text):
+def snowball_stemming(tokenised_text):
     if isinstance(tokenised_text, list):  # Check if it's a list
         return [ss.stem(word) for word in tokenised_text]  # Apply stemming word by word
     else:
