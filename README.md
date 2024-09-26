@@ -1,6 +1,8 @@
 # nlp_lib
-Build on re,string,nltk,spacy
-Initial work done ...
-Almost all functions are properly working ... 
-Stilll being tested ...
-To Do : convert paackage to insallable library  by using setuptools aand  other tools and upload it to pypi
+## For Custome Text Pre-processing during NLP Task
+
+Use :
+
+* from nlp_lib import *
+* df = pd.read_csv("mycsv.csv") # let columns be col1,col2,col3 ... coln
+* df['rm_punct'] = df['col1'].apply(remove_punctuations) 
