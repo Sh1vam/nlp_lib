@@ -4,7 +4,7 @@ setup(
     name="nlp_lib", 
     version="0.1.0",  
     author="Shivam Patel",
-    author_email="shivampatel2552003@gmail.com",
+    author_email="",
     description="A custom NLP library for Text Pre-processing",
     long_description=open('README.md').read(),  
     long_description_content_type="text/markdown",
