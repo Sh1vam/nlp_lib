@@ -14,7 +14,7 @@ import numpy as np
 def list_joint(text):
     # Check if the input is a list of characters
     if isinstance(text, list):
-        return ''.join(text)  # Join the list of characters into a string
+        return ' '.join(text)  # Join the list of characters into a string
     
     # If it's NaN, return an empty string
     if pd.isnull(text):
