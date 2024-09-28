@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
-
+def reqdmnt():
+    with open('requirements.txt') as req:
+        return req.read().splitlines()
 setup(
     name="nlp_lib", 
     version="0.1.0",  
@@ -16,4 +18,5 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',  
+    install_requires=reqdmnt(), 
 )
