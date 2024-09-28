@@ -1,8 +1,12 @@
 # nlp_lib
 ## For Custome Text Pre-processing during NLP Task
-> python -m spacy download en_core_web_sm
+
+- download repo and extract it 
 - got to nlp_lib-master directory run command prompt
-> type : pip install . 
+> type : pip install .
+
+ >> python -m spacy download en_core_web_sm
+
 Use :
 
 * from nlp_lib import *
