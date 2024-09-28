@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 def reqdmnt():
-    with open('requirements.txt') as req:
+    with open('requirement.txt') as req:
         return req.read().splitlines()
 setup(
     name="nlp_lib", 
