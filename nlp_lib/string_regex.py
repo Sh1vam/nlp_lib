@@ -107,7 +107,11 @@ def remove_url(text):
 
 # In[10]:
 
-
+def remove_digits(text):
+  if pd.isnull(text):  
+        return np.nan
+  text = text.translate(str.maketrans('', '', string.digits))
+  return text.strip()
 '''use on df by df[].apply(function_name)
 remove_punctuations
 remove_url
