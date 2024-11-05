@@ -12,7 +12,13 @@ def pos_tag(text):
     doc = nlp(text)
     pos_tags = [(token.text, token.pos_) for token in doc]
     return pos_tags
-
+    
+def ner(text):
+    if pd.isnull(text):  
+        return np.nan
+    doc = nlp(text)
+    ner = [(ent.text,ent.label_) for ent in doc.ents]
+    return ner
 
 def lower_case(body_text):
     if pd.isnull(body_text):  
