@@ -13,4 +13,4 @@ Use :
 * df = pd.read_csv("mycsv.csv") # let columns be col1,col2,col3 ... coln
 * df['rm_punct'] = df['col1'].apply(remove_punctuations) 
 
-___**Note :- when you imoport this library as shown it will import pandas as pd and numpy as np aditionaly nltk and spacy can also be use without importing statements, I haven't checked for re and string**___
+___**Note :- when you imoport this library as shown it will import pandas as pd and numpy as np aditionaly re,string,nltk and spacy can also be use without importing statements.**___
