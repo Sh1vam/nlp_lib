@@ -6,7 +6,9 @@
 > type : pip install .
 
  >> python -m spacy download en_core_web_sm # for language corpus of english language
+
  >> python -m spacy download en_core_web_md
+
  >> nlp=spacy.load("en_core_web_md") # for using a.similarity(b) function
 
 Use :
